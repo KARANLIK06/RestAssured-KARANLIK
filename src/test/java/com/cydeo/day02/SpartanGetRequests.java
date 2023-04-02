@@ -5,11 +5,12 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class SpartanGetRequests {
 
-    String baseUrl="http://54.145.80.239:8000";
+    String baseUrl = "http://54.145.80.239:8000";
 
     //    Given Accept type application/json
     //    When user send GET request to api/spartans end point
@@ -18,7 +19,7 @@ public class SpartanGetRequests {
     //    And response body should include spartan result
 
     @Test
-    public void test1(){
+    public void test1() {
         Response response = RestAssured.given().accept(ContentType.JSON)
                 .when()
                 .get(baseUrl + "/api/spartans");
@@ -34,12 +35,35 @@ public class SpartanGetRequests {
 
         //how to do API testing then ?
         //verify status code is 200
-        Assertions.assertEquals(response.statusCode(),200);
+        Assertions.assertEquals(response.statusCode(), 200);
 
         //verify content type is application/json
-        Assertions.assertEquals(response.contentType(),"application/json");
-
+        Assertions.assertEquals(response.contentType(), "application/json");
 
     }
 
+     /*
+        Given accept header is application/json
+        When users sends a get request to /api/spartans/3
+        Then status code should be 200
+        And content type should be application/json
+        and json body should contain Fidole
+     */
+
+    @DisplayName("Get one spartan/api/spartans/3 and verify")
+    @Test
+    public void test2() {
+
+        Response response = RestAssured.given().accept(ContentType.JSON)
+                .when().get(baseUrl + "/api/spartans/3");
+
+        //verify status code 200
+        Assertions.assertEquals(response.statusCode(),200);
+
+        //verify content type
+        Assertions.assertEquals(response.contentType(),"application/json");
+
+        //verify json body contains Fidole
+        Assertions.assertTrue(response.body().asString().contains("Fidole"));
+    }
 }
