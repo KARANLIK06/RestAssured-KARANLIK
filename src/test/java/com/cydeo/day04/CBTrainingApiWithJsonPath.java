@@ -11,7 +11,7 @@ public class CBTrainingApiWithJsonPath {
     @BeforeAll
     public static void init(){
 
-        // save baseURL inside this variable so that we dont need to type each http method.
+        // save baseURL inside this variable so that we don't need to type each http method.
         baseURI="http://api.training.cydeo.com";
 
     }
