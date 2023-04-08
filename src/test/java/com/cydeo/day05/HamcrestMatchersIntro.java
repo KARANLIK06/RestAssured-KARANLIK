@@ -88,7 +88,6 @@ public class HamcrestMatchersIntro {
         //check if all numbers greater than 0
         assertThat(listOfNumbers,everyItem(greaterThan(0)));
 
-
     }
 
 }
