@@ -57,7 +57,7 @@ public class SpartanTestsWithParameters {
     @DisplayName("GET request /api/spartans/{id} Negative Test")
     @Test
     public void test2(){
-        Response response = given().accept(ContentType.JSON)
+        Response response = given().accept(ContentType.JSON).log().all()
                 .and().pathParam("id", 500)
                 .when().get("/api/spartans/{id}");
 
@@ -88,10 +88,23 @@ public class SpartanTestsWithParameters {
     @Test
     public void test3() {
 
-        Response response = given().accept(ContentType.JSON)
+        Response response = given().log().all()
+                .accept(ContentType.JSON)
                 .and().queryParams("nameContains", "e")
                 .and().queryParam("gender", "Female")
                 .when().get("/api/spartans/search");
+
+        //verify status code 200
+        assertEquals(200,response.statusCode());
+
+        //verify content type
+        assertEquals("application/json",response.contentType());
+
+        //"Female" should be in response payload
+        assertTrue(response.body().asString().contains("Female"));
+
+        //"Janette" should be in response payload
+        assertTrue(response.body().asString().contains("Janette"));
 
 
     }
