@@ -12,7 +12,7 @@ public class CBTrainingApiWithJsonPath {
     public static void init(){
 
         // save baseURL inside this variable so that we don't need to type each http method.
-        baseURI="http://api.training.cydeo.com";
+        baseURI="https://api.training.cydeo.com";
 
     }
 
