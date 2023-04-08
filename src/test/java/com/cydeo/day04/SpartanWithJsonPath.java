@@ -45,10 +45,10 @@ public class SpartanWithJsonPath extends SpartanTestBase {
         String gender = jsonPath.getString("gender");
         long phone = jsonPath.getLong("phone");
 
-        System.out.println("id = " + id);
-        System.out.println("name = " + name);
+        System.out.println("id     = " + id);
+        System.out.println("name   = " + name);
         System.out.println("gender = " + gender);
-        System.out.println("phone = " + phone);
+        System.out.println("phone  = " + phone);
 
 
     }
